@@ -38,29 +38,31 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-[calc(100vh-64px)] flex items-center justify-center p-4 bg-slate-50">
+    <div className="min-h-[calc(100vh-64px)] flex items-center justify-center p-6">
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
+        initial={{ opacity: 0, scale: 0.95 }}
+        animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.5 }}
         className="max-w-md w-full"
       >
-        <div className="bg-white p-8 rounded-2xl shadow-xl border border-slate-100">
-          <div className="text-center mb-8">
-            <h1 className="text-3xl font-bold text-slate-900 mb-2">Welcome Back</h1>
-            <p className="text-slate-500">Sign in to your account to continue</p>
+        <div className="glass-card p-10">
+          <div className="text-center mb-10">
+            <h1 className="text-4xl font-black tracking-tight mb-3">
+              <span className="gradient-text">Welcome Back</span>
+            </h1>
+            <p className="text-slate-500 font-medium text-lg">Enter your details to access your account</p>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
-              <label className="block text-sm font-medium text-slate-700 mb-2">Email Address</label>
-              <div className="relative">
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
+              <label className="block text-sm font-bold text-slate-700 mb-2 ml-1">Email Address</label>
+              <div className="relative group">
+                <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-400 group-focus-within:text-primary-500 transition-colors">
                   <Mail className="h-5 w-5" />
                 </div>
                 <input
                   type="email"
-                  className="input-field pl-10"
+                  className="input-field pl-12"
                   placeholder="name@example.com"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
@@ -69,14 +71,14 @@ const Login = () => {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-slate-700 mb-2">Password</label>
-              <div className="relative">
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
+              <label className="block text-sm font-bold text-slate-700 mb-2 ml-1">Password</label>
+              <div className="relative group">
+                <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-400 group-focus-within:text-primary-500 transition-colors">
                   <Lock className="h-5 w-5" />
                 </div>
                 <input
                   type="password"
-                  className="input-field pl-10"
+                  className="input-field pl-12"
                   placeholder="••••••••"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
@@ -87,24 +89,24 @@ const Login = () => {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full btn-primary flex items-center justify-center space-x-2 h-11"
+              className="w-full btn-primary flex items-center justify-center space-x-3 h-14"
             >
               {isSubmitting ? (
-                <Loader2 className="h-5 w-5 animate-spin" />
+                <Loader2 className="h-6 w-6 animate-spin text-white" />
               ) : (
                 <>
-                  <span>Sign In</span>
-                  <ArrowRight className="h-5 w-5" />
+                  <span className="text-lg">Sign In</span>
+                  <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
                 </>
               )}
             </button>
           </form>
 
-          <div className="mt-8 text-center">
-            <p className="text-slate-500 text-sm">
+          <div className="mt-10 text-center">
+            <p className="text-slate-500 font-medium">
               Don't have an account?{' '}
-              <Link to="/register" className="text-primary-600 font-semibold hover:underline">
-                Create an account
+              <Link to="/register" className="text-primary-600 font-bold hover:text-primary-700 transition-colors">
+                Join us today
               </Link>
             </p>
           </div>
